@@ -1,65 +1,87 @@
-import Image from "next/image";
+import { ArrowDown, MousePointer2 } from "lucide-react";
+import { Footer } from "@/components/footer";
+import { HeroScene } from "@/components/hero-scene";
+import { MotionDiv, MotionSection, reveal, stagger } from "@/components/motion";
+import { Navbar } from "@/components/navbar";
+import { ProjectCard } from "@/components/project-card";
+import { SectionHeader } from "@/components/section-header";
+import { capabilities, projects } from "@/lib/projects";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+    <>
+      <Navbar />
+      <main className="relative overflow-hidden">
+        <section className="relative mx-auto min-h-[720px] max-w-7xl px-5 pb-16 pt-36 sm:px-8 lg:min-h-[760px] lg:pt-44">
+          <HeroScene />
+          <MotionDiv
+            variants={stagger}
+            initial="hidden"
+            animate="show"
+            className="max-w-4xl"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+            <MotionDiv variants={reveal} className="mb-8 flex items-center gap-3 text-sm text-muted">
+              <span>AI</span>
+              <span>·</span>
+              <span>자동화</span>
+              <span>·</span>
+              <span>데이터</span>
+            </MotionDiv>
+            <MotionDiv variants={reveal}>
+              <h1 className="text-balance text-5xl font-black leading-[1.08] tracking-tight text-foreground sm:text-7xl lg:text-8xl">
+                문제를 정의하고,
+                <br />
+                <span className="text-accent">시스템</span>으로 해결합니다.
+              </h1>
+              <p className="mt-8 max-w-2xl text-xl leading-9 text-muted">
+                AI와 자동화, 데이터 분석을 활용해 반복 업무를 운영 가능한 구조로 바꾸는
+                AI Builder이자 Product Thinker, 이진호입니다.
+              </p>
+            </MotionDiv>
+            <MotionDiv variants={reveal} className="mt-10 flex flex-wrap items-center gap-4">
+              {capabilities.map(({ label, icon: Icon }) => (
+                <span
+                  key={label}
+                  className="inline-flex items-center gap-2 rounded-full border border-line bg-background/65 px-4 py-2 text-sm text-muted"
+                >
+                  <Icon size={15} className="text-accent" />
+                  {label}
+                </span>
+              ))}
+            </MotionDiv>
+            <MotionDiv variants={reveal} className="mt-16 flex items-center gap-3 text-sm text-muted">
+              <MousePointer2 size={17} />
+              카드를 선택해 케이스 스터디를 탐색하세요
+              <ArrowDown size={17} />
+            </MotionDiv>
+          </MotionDiv>
+        </section>
+
+        <MotionSection
+          id="projects"
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.18 }}
+          variants={stagger}
+          className="mx-auto max-w-7xl px-5 py-24 sm:px-8"
+        >
+          <MotionDiv variants={reveal} className="mb-14">
+            <SectionHeader
+              eyebrow="Selected Work"
+              title="운영의 반복을 줄이고, 의사결정 루프를 만든 프로젝트"
+              description="각 프로젝트는 모호한 문제를 정의하고, 가설을 세우고, 실제 작동하는 시스템으로 전환한 과정에 집중합니다."
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+          </MotionDiv>
+          <MotionDiv variants={reveal} className="flex gap-6 overflow-x-auto pb-10 [scrollbar-width:none]">
+            {projects.map((project, index) => (
+              <div key={project.slug} className="min-w-[280px] md:min-w-fit">
+                <ProjectCard project={project} featured={index === 0} />
+              </div>
+            ))}
+          </MotionDiv>
+        </MotionSection>
       </main>
-    </div>
+      <Footer />
+    </>
   );
 }
