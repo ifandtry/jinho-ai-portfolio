@@ -25,7 +25,7 @@ function Panel({ position, scale }: { position: [number, number, number]; scale:
 
 export function HeroScene() {
   return (
-    <div className="pointer-events-none absolute inset-y-24 right-0 hidden w-[48vw] opacity-70 lg:block">
+    <div className="pointer-events-none absolute right-8 top-32 z-0 hidden h-[360px] w-[34vw] opacity-28 lg:block">
       <Canvas camera={{ position: [0, 0, 7.5], fov: 36 }} dpr={[1, 1.5]}>
         <ambientLight intensity={1.9} />
         <directionalLight position={[3, 4, 5]} intensity={2.2} />
