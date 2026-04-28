@@ -4,7 +4,7 @@ import { Menu } from "lucide-react";
 export function Navbar() {
   return (
     <header className="fixed inset-x-0 top-0 z-50">
-      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 sm:px-8">
+      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 sm:px-8">
         <Link href="/" className="text-2xl font-black tracking-tight text-foreground">
           J.
         </Link>
@@ -20,10 +20,10 @@ export function Navbar() {
           </Link>
         </nav>
         <button
-          className="grid size-12 place-items-center rounded-full bg-foreground text-background shadow-lg transition hover:scale-105"
+          className="grid size-10 place-items-center rounded-full bg-foreground text-background shadow-lg transition hover:scale-105"
           aria-label="메뉴 열기"
         >
-          <Menu size={19} />
+          <Menu size={18} />
         </button>
       </div>
     </header>

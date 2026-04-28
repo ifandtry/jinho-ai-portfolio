@@ -1,9 +1,15 @@
 import { Code2, Mail, UserRound } from "lucide-react";
 
-export function Footer() {
+export function Footer({ compact = false }: { compact?: boolean }) {
   return (
-    <footer className="border-t border-line/80 px-5 py-10 sm:px-8">
-      <div className="mx-auto flex max-w-7xl flex-col gap-6 text-sm text-muted md:flex-row md:items-center md:justify-between">
+    <footer className={`border-t border-line/80 px-5 sm:px-8 ${compact ? "py-2" : "py-10"}`}>
+      <div
+        className={`mx-auto flex max-w-7xl flex-col text-muted md:flex-row md:items-center md:justify-between ${
+          compact ? "text-xs" : "text-sm"
+        } ${
+          compact ? "gap-2" : "gap-6"
+        }`}
+      >
         <p>© 2026 Jinho Lee. Built for systems, product, and AI automation work.</p>
         <div className="flex items-center gap-5">
           <a aria-label="GitHub" className="transition hover:text-foreground" href="https://github.com/ifandtry">
